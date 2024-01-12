@@ -11,7 +11,7 @@ context('functionality Login', () => {
         cy.get('.woocommerce-MyAccount-content > :nth-child(3)').should('contain','A partir do painel de controle de sua conta, você pode ver suas compras recentes, gerenciar seus endereços de entrega e faturamento, e editar sua senha e detalhes da conta.')
     })
 
-    it('it should show an error message : user incorret ', () => {
+    it('it should show an error message : user incorrect ', () => {
         cy.visit('http://lojaebac.ebaconline.art.br/minha-conta/')
         cy.get('#username').type('aluno_ebac@test.com')
         cy.get('#password').type('teste@teste.com')
@@ -19,7 +19,7 @@ context('functionality Login', () => {
         cy.get('.woocommerce-error > li').should('contain','Endereço de e-mail desconhecido. Verifique novamente ou tente seu nome de usuário.')
 
     })
-    it('it should show an error message : password incorret ', () => {
+    it('it should show an error message : password incorrect ', () => {
         cy.visit('http://lojaebac.ebaconline.art.br/minha-conta/')
         cy.get('#username').type('aluno_ebac@teste.com')
         cy.get('#password').type('teste@teste')
