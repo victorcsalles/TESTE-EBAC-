@@ -1,4 +1,5 @@
 /// <reference types="cypress" />
+const dados_login = require('../fixtures/perfil.json')
 
 
 context('functionality Login', () => {
@@ -7,9 +8,7 @@ context('functionality Login', () => {
         cy.visit('http://lojaebac.ebaconline.art.br/minha-conta/')
     });
 
-    afterEach(() => {
-        cy.screenshot()
-    });
+
 
     it('he mus log in successfully', () => {
         cy.get('#username').type('aluno_ebac@teste.com')
@@ -18,8 +17,29 @@ context('functionality Login', () => {
         cy.get('a > .hidden-xs').should('contain', 'Welcome aluno_ebac !')
         cy.get('.woocommerce-MyAccount-content > :nth-child(3)').should('contain', 'A partir do painel de controle de sua conta, você pode ver suas compras recentes, gerenciar seus endereços de entrega e faturamento, e editar sua senha e detalhes da conta.')
     })
+     
+    
+    it('he must log in successfully', () => {
 
-    it('it should show an error message : user incorrect ', () => {
+        cy.get('#username').type( dados_login.usuario)
+        cy.get('#password').type(dados_login.senhna)
+        cy.get('.woocommerce-form > .button').click()
+        
+     });
+    
+     it('He must log in successfully with fixture', () => {
+        cy.fixture('perfil').then(dados => {
+            cy.get('#username').type(dados.usuario)
+            cy.get('#password').type(dados.senhna,{log: false})
+            cy.get('.woocommerce-form > .button').click()
+            cy.get('a > .hidden-xs').should('contain', 'Welcome aluno_ebac !')
+
+        })
+
+        
+     });
+    
+     it('it should show an error message : user incorrect ', () => {
         cy.get('#username').type('aluno_ebac@test.com')
         cy.get('#password').type('teste@teste.com')
         cy.get('.woocommerce-form > .button').click()

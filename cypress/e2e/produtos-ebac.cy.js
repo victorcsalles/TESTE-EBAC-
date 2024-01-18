@@ -3,7 +3,7 @@
 context('functionality  make shopping', () => {
 
     beforeEach(() => {
-        cy.visit('http://lojaebac.ebaconline.art.br/produtos/')
+        cy.visit('produtos/')
     });
     
     it('he must add shopping in the shopping cart', () => {
