@@ -5,7 +5,7 @@ context('functionality  make shopping', () => {
     beforeEach(() => {
         cy.visit('produtos/')
     });
-    
+
     it('he must add shopping in the shopping cart', () => {
 
         var quantidade = 20
@@ -15,10 +15,15 @@ context('functionality  make shopping', () => {
         cy.get('.button-variable-item-Brown').click()
         cy.get('.input-text').clear().type(quantidade)
         cy.get('.single_add_to_cart_button').click()
-        cy.get('.dropdown-toggle > .mini-cart-items').should('contain',(quantidade))
+        cy.get('.dropdown-toggle > .mini-cart-items').should('contain', (quantidade))
         cy.get('.woocommerce-message').should('contain', quantidade + ' × “Aether Gym Pant” foram adicionados no seu carrinho.')
 
 
-        
+
+    });
+
+    it('he must add shopping in the shopping cart using custom commands ', () => {
+        var quantidade = 50
+        cy.produtos('Aether Gym Pant','32','Blue',quantidade)
     });
 });

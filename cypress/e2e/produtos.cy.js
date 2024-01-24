@@ -16,7 +16,6 @@ context(' functionality  make shopping ', () => {
         cy.get(':nth-child(3) > .ProductAttributes_labelOption__4v8Qz > .ProductAttributes_contentOption__9bNmU > span').click()
         cy.get('.ProductInformation_actionBuy__8RfyL').click()
         cy.get('.quantitySelect').clear().type(5)
-        cy.get('#ad5s1d').type('PRIMEIRA10')
         cy.get('.button').click()
     });
 

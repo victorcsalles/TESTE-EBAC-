@@ -26,4 +26,16 @@ describe('pre-register', () => {
         cy.get('.woocommerce-Button').click()
         cy.get('.woocommerce-message').should('contain','Detalhes da conta modificados com sucesso.')
     });
+
+    it('must complete pre-registration successfully using custom commands', () => {
+        var senha = faker.internet.password() 
+        var senha2 = faker.internet.password()
+        var email = faker.internet.email(nome)
+        var nome = faker.person.firstName()
+        var sobrenome = faker.person.lastName()
+
+        cy.precadastro(email,senha,nome,sobrenome,senha2)
+
+        
+    });
 });
