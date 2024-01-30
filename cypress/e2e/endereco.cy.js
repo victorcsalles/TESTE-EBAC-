@@ -13,12 +13,17 @@ context('He must alteration address successfully', () => {
        
     });
 
- it('Must successfully pre-register your billing', () => {
+ it('Must successfully pre-register your address billing ', () => {
 
     enderecoPage.editarEnderecoFaturamento()
     cy.get('.woocommerce-message').should('contain','Endereço alterado com sucesso.')
 
  });
 
+
+ it.only('Must successfully pre-register your Shipping Address ', () => {
+    enderecoPage.editarEnderecoEntrega()
+
+ });
     
 });

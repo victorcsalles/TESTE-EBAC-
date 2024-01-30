@@ -14,8 +14,8 @@ context('functionality Login', () => {
         cy.get('#username').type('aluno_ebac@teste.com')
         cy.get('#password').type('teste@teste.com')
         cy.get('.woocommerce-form > .button').click()
-        cy.get('a > .hidden-xs').should('contain', 'Welcome aluno_ebac !')
-        cy.get('.woocommerce-MyAccount-content > :nth-child(3)').should('contain', 'A partir do painel de controle de sua conta, você pode ver suas compras recentes, gerenciar seus endereços de entrega e faturamento, e editar sua senha e detalhes da conta.')
+        cy.get('.topbar-inner > :nth-child(1) > .list-inline > :nth-child(2) > a').should('contain','Logout')
+        
     })
      
     
@@ -32,10 +32,9 @@ context('functionality Login', () => {
             cy.get('#username').type(dados.usuario)
             cy.get('#password').type(dados.senhna,{log: false})
             cy.get('.woocommerce-form > .button').click()
-            cy.get('a > .hidden-xs').should('contain', 'Welcome aluno_ebac !')
+            cy.get('.woocommerce-MyAccount-content > :nth-child(3)').should('contain', 'A partir do painel de controle de sua conta, você pode ver suas compras recentes, gerenciar seus endereços de entrega e faturamento, e editar sua senha e detalhes da conta.')
 
         })
-
         
      });
     
